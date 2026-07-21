@@ -1,3 +1,40 @@
 [gd_scene format=3 uid="uid://cgfm5auch0hv8"]
 
+[ext_resource type="Script" uid="uid://bvpy2cy1mcm8v" path="res://Scripts/PlayerController.cs" id="1_a757a"]
+[ext_resource type="Texture2D" uid="uid://duqby0xqvwx8y" path="res://Art/Sprites/Dices/Blue_Dice.png" id="2_a757a"]
+[ext_resource type="Texture2D" uid="uid://ldbtjyms5dh8" path="res://Art/Sprites/Dices/Red_Dice.png" id="3_1lj5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk6dl"]
+size = Vector2(130, 133)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xk6dl"]
+distance = -326.0
+
 [node name="Node2D" type="Node2D" unique_id=1724878270]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1695597758]
+script = ExtResource("1_a757a")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1922580240]
+position = Vector2(6.67572e-06, -3.499998)
+scale = Vector2(4.1250005, 4.09375)
+texture = ExtResource("2_a757a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1320239407]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_xk6dl")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=221650368]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1103371551]
+position = Vector2(237, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1018435519]
+visible = false
+position = Vector2(230.99998, 4)
+scale = Vector2(4.1250005, 4.09375)
+texture = ExtResource("3_1lj5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1948402664]
+visible = false
+shape = SubResource("WorldBoundaryShape2D_xk6dl")
