@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://6x0vvkick3od"]
+
+[ext_resource type="Script" uid="uid://bvpy2cy1mcm8v" path="res://Scripts/PlayerController.cs" id="1_lx6tb"]
+[ext_resource type="Texture2D" uid="uid://duqby0xqvwx8y" path="res://Art/Sprites/Dices/Blue_Dice.png" id="2_qjxnp"]
+[ext_resource type="Script" uid="uid://cm1e0gd7n3or1" path="res://Scripts/LevelSwitch.cs" id="4_b13e8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk6dl"]
+size = Vector2(130, 133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lj5l"]
+size = Vector2(127, 133)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_382mo"]
+size = Vector2(126, 101)
+
+[node name="Node2D" type="Node2D" unique_id=1724878270]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1695597758]
+script = ExtResource("1_lx6tb")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1922580240]
+position = Vector2(6.67572e-06, -3.499998)
+scale = Vector2(4.1250005, 4.09375)
+texture = ExtResource("2_qjxnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1320239407]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_xk6dl")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=221650368]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=697125734]
+position = Vector2(462.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1018435519]
+position = Vector2(5.5, 2.5)
+scale = Vector2(4.1250005, 4.09375)
+texture = ExtResource("2_qjxnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1948402664]
+shape = SubResource("RectangleShape2D_1lj5l")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=909822052]
+script = ExtResource("4_b13e8")
+currentLevelID = 1
+diceInput = 1
+levelToLoadName = "node_2d_test"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=931928608]
+position = Vector2(460, -149.5)
+shape = SubResource("RectangleShape2D_382mo")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="OnBodyEntered"]
